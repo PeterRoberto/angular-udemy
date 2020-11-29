@@ -1,0 +1,64 @@
+<section>
+    <mat-card class="example-card">
+        <mat-card-content>
+           <form> 
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Nome</mat-label>
+                    <input matInput placeholder="Enter your name"
+                    [(ngModel)]="name1" name="anyname1">
+                </mat-form-field>
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Nome 2</mat-label>
+                    <input matInput placeholder="Enter your name 2"
+                    [(ngModel)]="name2" name="anyname2">
+                </mat-form-field>
+           </form> 
+        </mat-card-content>
+        <mat-card-actions>
+            <p>{{ name1 }}</p>
+            <p>{{ name2 }}</p> 
+        </mat-card-actions>
+    </mat-card>
+</section>
+
+
+
+
+<section>
+    <mat-card class="example-card">
+        <mat-card-title>
+            Client
+        </mat-card-title>
+        <mat-card-content>
+           <form> 
+                <mat-form-field style="width: 100%;">
+                    <mat-label>First Name</mat-label>
+                    <input matInput placeholder="First Name"
+                    [(ngModel)] ="client.firstName" name="firstname">
+                </mat-form-field>
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput placeholder="Last Name"
+                    [(ngModel)] ="client.lastName" name="lastname">
+                </mat-form-field>
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Address</mat-label>
+                    <input matInput placeholder="Address"
+                    [(ngModel)] ="client.address" name="address">
+                </mat-form-field>
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Age</mat-label>
+                    <input matInput placeholder="Age"
+                    [(ngModel)] ="client.age" name="age">
+                </mat-form-field>
+           </form> 
+        </mat-card-content>
+        <mat-card-actions>
+            <p>Name: {{ client.firstName }}</p>
+            <p>Last Name: {{ client.lastName }}</p> 
+            <p>Address: {{ client.address }}</p> 
+            <p>Age: {{ client.age }}</p> 
+        </mat-card-actions>
+    </mat-card>
+</section>
+

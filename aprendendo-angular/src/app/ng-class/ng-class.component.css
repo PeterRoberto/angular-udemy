@@ -1,0 +1,28 @@
+.myclass1 {
+    font-size: 16px;
+    color: green;
+    background-color: grey;
+    padding: 10px;
+}
+
+.myclass2 {
+    font-size: 36px;
+    color: red;
+    background-color: pink;
+    padding: 40px;
+}
+
+.myclass3 {
+    font-size: 50px;
+    color: sandybrown;
+    background-color: yellow;
+    padding: 70px;
+}
+
+
+.myclass4 {
+    font-size: 70px;
+    color: white;
+    background-color: black;
+    padding: 100px;
+}
