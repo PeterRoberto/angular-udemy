@@ -20,6 +20,17 @@ var myLogger = function (req, res, next) {
 }
 app.use(myLogger);
 
+app.get('/products', function(req, res) {
+    Product.find().lean().exec(
+        (err, prods) => {
+            if(err) 
+                res.status(500).send(err);
+            else 
+                res.status(200).send(prods);
+        }
+    );
+});
+
 
 app.get('/productserr', function(req, res) {
     setTimeout(
@@ -30,4 +41,49 @@ app.get('/productserr', function(req, res) {
         }, 2000); 
 });
 
+
+
+
+app.get('/productsdelay', function(req, res) {
+    setTimeout( () => {
+        Product.find().lean().exec(
+            (err, prods) => {
+                if(err) 
+                    res.status(500).send(err);
+                else 
+                    res.status(200).send(prods);
+            }
+        );
+    }, 2000); 
+});
+
+
+app.get('/products_ids', function(req, res) {
+    Product.find().lean().exec(
+        (err, prods) => {
+            if(err) 
+                res.status(500).send(err);
+            else 
+                res.status(200).send(prods.map(p=>p._id));
+        }
+    );
+});
+
+
+
+app.get('/products/name/:id', function(req, res) {
+    const id = req.params.id;
+    Product.findById(id,  
+        (err, prod) => {
+            if(err) 
+                res.status(500).send(err);
+            else if(!prod)
+                res.status(404).send({}); 
+            else 
+                res.status(200).send(prod.name); 
+        }
+    );  
+});
+   
+ 
 app.listen(3000);

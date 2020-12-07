@@ -13,6 +13,9 @@ export class AppComponent {
 
   simpleReqProductsObs$: Observable<Product[]>;
   productsErrorHandling: Product[];
+  productsLoading: Product[];
+  bLoading : boolean = false;
+  productsIds: Product[];
 
   constructor(
     private productsService: ProductsService,
@@ -26,7 +29,7 @@ export class AppComponent {
   getSimpleHttpRequest() {
     this.simpleReqProductsObs$ = this.productsService.getProducts();
   }
-
+ 
   getProductsErrorHandling() {
     this.productsService.getProductsError()
       .subscribe(
@@ -36,15 +39,65 @@ export class AppComponent {
           console.log("Message: " + err.error.msg);
           console.log("Status code: " + err.status);
           let config = new MatSnackBarConfig();
-          config.duration = 2000;
+          config.duration = 2000; 
           config.panelClass = ['snack_error']; 
-          this.snackBar.open(err.error.msg, '', config);
+ 
+          if(err.status == 0) {
+            this.snackBar.open('Could not connect to the server', '', config);
+          } else {
+            this.snackBar.open(err.error.msg, '', config);
+          }
         } 
       )
   }
 
   getProductsWithErrorHandlingOK() {
-    
+    this.productsService.getProductsDelay()
+      .subscribe(
+        (prods) => { 
+          this.productsErrorHandling = prods; 
+          let config = new MatSnackBarConfig();
+          config.duration = 2000;
+          config.panelClass = ['snack_ok']; 
+          this.snackBar.open('Products successfuly loaded!', '', config);
+        }, 
+        (err) => {
+          console.log(err);
+        } 
+      ) 
+  }
+
+  getProductsLoading() {
+    this.bLoading = true;
+    this.productsService.getProductsDelay()
+      .subscribe(
+        (prods) => { 
+          this.productsLoading = prods; 
+          this.bLoading = false;
+        },  
+        (err) => { 
+          console.log(err);
+          this.bLoading = true;
+        } 
+      ) 
+  }
+
+
+  getProductsIds() {
+    this.productsService.getProductsIds()
+      .subscribe((ids) => {
+        this.productsIds = ids.map(id => ({_id: id, name: '', department: '', price: 0}))
+      });
+  }
+
+  loadName(id: string) {
+    this.productsService.getProductName(id)
+      .subscribe((name => {
+        let index = this.productsIds.findIndex(p=> p._id===id);
+        if(index >= 0) {
+          this.productsIds[index].name = name;
+        }
+      }));  
   }
 
 }
