@@ -5,25 +5,24 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { DialogEditProductComponent } from './dialog-edit-product/dialog-edit-product.component';
+import { TemplateDrivenFormComponent } from './template-driven-form/template-driven-form.component';
+import { FormNativeValidationComponent } from './form-native-validation/form-native-validation.component';
+import { FormValidationComponent } from './form-validation/form-validation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DialogEditProductComponent
+    TemplateDrivenFormComponent,
+    FormNativeValidationComponent,
+    FormValidationComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FormsModule,
-    HttpClientModule
+    FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
-  entryComponents: [
-    DialogEditProductComponent
-  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
