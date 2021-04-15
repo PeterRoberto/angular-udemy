@@ -38,7 +38,7 @@
               <h4>Telephones: </h4>
             </div> 
   
-            <div fxFlex="100"  fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="20px">
+            <div formArrayName="phones" fxFlex="100"  fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="20px">
               <mat-form-field fxFlex="30" *ngFor="let c of phones.controls; let i=index">  
                 <input matInput type="text" placeholder="Telephone" [formControlName]="i">
               </mat-form-field>

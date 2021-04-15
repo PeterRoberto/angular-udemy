@@ -1,0 +1,10 @@
+API: https://countries-274616.ew.r.appspot.com/ 
+https://restcountries.eu/#api-endpoints-response-example
+https://github.com/apilayer/restcountries
+
+https://www.youtube.com/watch?v=Ep0GPo1N3Qc&t=125s&ab_channel=99ENSINA 
+https://www.youtube.com/watch?v=V7OuPzVGLzs&ab_channel=L%C3%A9oAndrade
+
+https://reqres.in/
+https://restcountries.eu/#api-endpoints-all
+http://json2ts.com/
